@@ -53,6 +53,9 @@ let top10Movies = [
 // logs all request to terminal.
 app.use(morgan('common'));
 
+// Serve documentation.html (static files) from '/public' folder.
+app.use(express.static('public'));
+
 // Gets requests.
 // Maps a route at the endpoint “/movies”.
 app.get('/movies', function (req, res) {
@@ -63,9 +66,6 @@ app.get('/movies', function (req, res) {
 app.get('/', function (req, res) {
   res.send('Welcome to my movie club!');
 });
-
-// Serve documentation.html (static files) from '/public' folder.
-app.use(express.static('public'));
 
 // Error handling.
 app.use(function (err, req, res, next) {
