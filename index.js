@@ -97,6 +97,54 @@ app.get('/', function (req, res) {
   res.send('Welcome to my movie club!');
 });
 
+// Gets the data about a single movie, by title
+app.get('/movies/:title', (req, res) => {
+  res.json(
+    movies.find((movie) => {
+      return movie.title === req.params.title;
+    })
+  );
+});
+
+// Returns data about a genre (description) by name/title.
+app.get('/movies/genres/:genres', (req, res) => {
+  res.send('Successful GET request returning a description of the genre');
+});
+
+// Returns data about a director (bio, birth year, death year) by name
+app.get('/movies/directors/:name', (req, res) => {
+  res.send('Successful GET request returning data of the Director');
+});
+
+// Allows new users to register.
+app.post('/users', (req, res) => {
+  res.send('Registration succesful!');
+});
+
+// Allows users to update their user info (username).
+app.put('/users/:username', (req, res) => {
+  res.send(
+    'The user: ' + req.params.username + ' ' + 'was successfully updated'
+  );
+});
+
+// Allows users to add a movie to their list of favorites.
+app.post('/users/:username/favourites/:title', (req, res) => {
+  res.send('Movie:' + req.params.title + ' ' + 'was added to favourites. ');
+});
+
+// Allows users to remove a movie from their list of favorites.
+app.delete('/users/:username/favourites/:title', (req, res) => {
+  res.send(
+    'Movie:' + req.params.title + ' ' + 'has been removed from favourites'
+  );
+});
+
+// Allow existing users to deregister.
+app.delete('/users/:username', (req, res) => {
+  res.send('User ' + req.params.username + ' ' + 'was deleted.');
+});
+
 // Error handling.
 app.use(function (err, req, res, next) {
   console.error(err.stack);
