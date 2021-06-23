@@ -85,10 +85,10 @@ app.get('/movies/genres/:Genre', (req, res) => {
 });
 
 // Returns data about a director (bio, birth year, death year) by name
-app.get('/movies/directors/:name', (req, res) => {
-  Users.findOne({ 'Dirtector.Name': req.params.Name })
+app.get('/movies/director/:Name', (req, res) => {
+  Movies.findOne({ 'Director.Name': req.params.Name })
     .then((director) => {
-      res.json(director);
+      res.status(200).json(director.Director);
     })
     .catch((err) => {
       console.error(err);
