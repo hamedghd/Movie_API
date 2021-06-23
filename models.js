@@ -33,3 +33,7 @@ let userSchema = mongoose.Schema({
 // Creates models using schemas.
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
+
+// Exports the models.
+module.exports.Movie = Movie;
+module.exports.User = User;
