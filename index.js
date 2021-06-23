@@ -15,3 +15,5 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, 
 // Creates an Express instance.
 // Declares a new variable to encapsulate the Express's functionality.
 const app = express();
+// Uses bodyparser middleware module
+app.use(bodyParser.json());
