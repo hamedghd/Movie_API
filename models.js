@@ -29,3 +29,7 @@ let userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, ref: 'Movie'
   }]
 })
+
+// Creates models using schemas.
+let Movie = mongoose.model('Movie', movieSchema);
+let User = mongoose.model('User', userSchema);
