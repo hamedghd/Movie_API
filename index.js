@@ -8,3 +8,5 @@ const Users = Models.User;
 const express = require('express');
 // Imports Morgan
 const morgan = require('morgan');
+// Imports body-parser
+const bodyParser = require('body-parser');
