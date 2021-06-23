@@ -17,3 +17,5 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, 
 const app = express();
 // Uses bodyparser middleware module
 app.use(bodyParser.json());
+// logs all requests to terminal.
+app.use(morgan('common'));
