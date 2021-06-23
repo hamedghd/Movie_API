@@ -74,9 +74,6 @@ app.get('/movies/:title', (req, res) => {
 
 // Returns data about a genre (description) by name/title.
 app.get('/movies/genres/:genres', (req, res) => {
-  res.send('Successful GET request returning a description of the genre');
-});
-app.get('/movies/genres/:genres', (req, res) => {
   Users.findOne({ 'Genre.Name': req.params.Genre })
     .then((genre) => {
       res.json(genre);
