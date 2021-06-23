@@ -35,3 +35,15 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
   res.send('Welcome to my movie club!');
 });
+
+// Maps a route at the endpoint “/movies”.
+app.get('/movies', (req, res) => {
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
