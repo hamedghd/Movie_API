@@ -208,3 +208,8 @@ app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+
+// Listens on port 8080.
+app.listen(8080, function () {
+  console.log('Server is running on port 8080.');
+});
