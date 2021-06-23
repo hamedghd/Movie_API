@@ -48,6 +48,18 @@ app.get('/movies', (req, res) => {
     });
 });
 
+// Returns all the users at "/users".
+app.get('/users', (req, res) => {
+  Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
 // Gets the data about a single movie, by title
 app.get('/movies/:title', (req, res) => {
   Users.findOne({ Title: req.params.Title })
