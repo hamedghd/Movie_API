@@ -59,3 +59,18 @@ app.get('/movies/:title', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
+
+// Returns data about a genre (description) by name/title.
+app.get('/movies/genres/:genres', (req, res) => {
+  res.send('Successful GET request returning a description of the genre');
+});
+app.get('/movies/genres/:genres', (req, res) => {
+  Users.findOne({ Genre: req.params.Genre })
+    .then((genre) => {
+      res.json(genre);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
