@@ -10,3 +10,5 @@ const express = require('express');
 const morgan = require('morgan');
 // Imports body-parser
 const bodyParser = require('body-parser');
+// Connects Mongoose to the created database.
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
