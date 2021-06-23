@@ -9,7 +9,7 @@
     <style>
       body {background-color:#e4e4e4; color:#000;}
       header {background-color:#3d3d3d; color:#f7f7f7;padding:10px;}
-      main {margin:10px; font-size:20px;}
+      main {margin:10px; font-size:16px;}
       table {background-color: #a9a9a9; width: 90%; table-layout: fixed; margin:0 auto;}
       table, th, td {border: 1px solid #000; border-collapse: collapse;}
       th, td {padding:10px;}
@@ -18,6 +18,7 @@
       tr:nth-child(even) { background-color: #cfcfcf; }
       /* makes table responsive. */
       .table {overflow-x:auto;}
+      span {font-weight: bold;}
     </style>
   </head>
   <body>
@@ -50,7 +51,27 @@
             <td>/movies</td>
             <td>None</td>
             <td>None</td>
-            <td>A JSON object holding data about all movies</td>
+            <td>
+              A JSON object holding data about all movies. Format:<br>
+              {
+                <span>Genre:</span> {<br>
+                <span>Name:</span> String,<br>
+                <span>Description:</span> String,<br>
+                },<br>
+                <span>Director:</span> {<br>
+                <span>Name:</span> String,<br>
+                <span>Bio:</span> String,<br>
+                <span>Birth:</span> Date,<br>
+                <span>Death:</span> Date<br>
+                },<br>
+                <span>Actors:</span> [],<br>
+                <span>_id:</span> 12-byte BSON type,<br>
+                <span>Title:</span>: String,<br>
+                <span>Description:</span> String,<br>
+                <span>ImagePath:</span> String,<br>
+                <span>Featured:</span> Boolean<br>
+              }
+            </td>
           </tr>
           <tr>
             <td>Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user</td>
@@ -59,29 +80,23 @@
             <td>/movies/:Title</td>
             <td>None</td>
             <td>
-              A JSON object holding data about a single movie. Example:<br>
+              A JSON object holding data about a single movie. Format:<br>
               {
-                "Description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",<br>
-                "Genre": " Drama",<br>
-                "Director": "Frank Darabont",<br>
-                "image_URL": "https://m.media-amazon.com/images/M/MV5BNjQ2NDA3MDcxMF5BMl5BanBnXkFtZTgwMjE5NTU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg"<br>
-              }
-              {
-                "Genre": {<br>
-                  "Name": "Biography",<br>
-                  "Description": "Primary focus is on the depiction of activities and personality of a real person or persons, for some or all of their lifetime. Events in their life may be reenacted, or described in a documentary style. If re-enacted, they should generally follow reasonably close to the factual record, within the limitations of dramatic necessity. A real person in a fictional setting would not qualify a production for this genre. If the focus is primarily on events, rather than a person, use History instead. Objective. Examples: Judy (2019) |Unbroken (2014) | Erin Brockovich (2000)"<br>
+                <span>Genre</span>: {<br>
+                  <span>Name</span>:<br>
+                  <span>Description</span>: String<br>
                 },<br>
-                "Director": {<br>
-                  "Name": "Steven Spielberg",<br>
-                  "Bio": "Steven Spielberg, in full Steven Allan Spielberg, (born December 18, 1946, Cincinnati, Ohio, U.S.), American motion-picture director and producer whose diverse films—which ranged from science-fiction fare, including such classics as Close Encounters of the Third Kind (1977) and E.T.: The Extra-Terrestrial (1982), to historical dramas, notably Schindler’s List (1993) and Saving Private Ryan (1998)—enjoyed both unprecedented popularity and critical success. - extracted from Britannica.com",<br>
-                  "Birth": "1946-12-18T00:00:00.000Z"<br>
+                <span>Director</span>: {<br>
+                  <span>Name</span>: String,<br>
+                  <span>Bio</span>: String,<br>
+                  <span>Birth</span>: Date<br>
                 },<br>
-                "Actors": [],<br>
-                "_id": "60c9f3dd55b35bf06b68ad73",<br>
-                "Title": "Schindler's List",<br>
-                "Description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",<br>
-                "ImagePath": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",<br>
-                "Featured": true<br>
+                <span>Actors</span>: [String],<br>
+                <span>_id</span>: 12-byte BSON type,<br>
+                <span>Title</span>: String,<br>
+                <span>Description</span>: String,<br>
+                <span>ImagePath</span>: String,<br>
+                <span>Featured</span>: Boolean<br>
               }
             </td>
           </tr>
@@ -91,7 +106,12 @@
             <td>/movies/genres/[Genre]</td>
             <td>/movies/genres/:Genre</td>
             <td>None</td>
-            <td>A JSON object holding data about a single genre</td>
+            <td>
+              A JSON object holding data about a single genre. Format:<br>
+              {<span>Name:</span> String,<br>
+              <span>Description:</span> String<br>
+              }<br>
+            </td>
           </tr>
           <tr>
             <td>Return data about a director (bio, birth year, death year) by name</td>
@@ -99,25 +119,29 @@
             <td>/movies/director/[Name]</td>
             <td>/movies/director/:Name</td>
             <td>None</td>
-            <td>A JSON object holding data about the director</td>
+            <td>
+              A JSON object holding data about the director. Format:<br>
+              <span>Director</span>: {<br>
+                <span>Name</span>: String<br>
+                <span>Bio</span>: String<br>
+                <span>Birth</span>: Date,<br>
+                <span>Death</span>: Date<br>
+              }<br>
+            </td>
           </tr>
           <tr>
             <td>Allow new users to register</td>
             <td>POST</td>
             <td>/users</td>
             <td>None</td>
-            <td>A JSON object holding data about the user to create. Example:<br>
+            <td>A JSON object holding data about the user to create. Format:<br>
             {
-              "FavoriteMovies": [<br>
-                "60c9f10e55b35bf06b68ad70",<br>
-                "60c9f61e55b35bf06b68ad75",<br>
-                "60c9f10e55b35bf06b68ad70"<br>
-              ],<br>
-              "_id": "60cafa0f59d17f38982cb96a",<br>
-              "Username": "bacon",<br>
-              "Password": "8716figurestill18",<br>
-              "Email": "bacon13@mail.com",<br>
-              "Birth": "1980-12-01T00:00:00.000Z"<br>
+              <span>FavoriteMovies</span>: [12-byte BSON type],<br>
+              <span>_id</span>: 12-byte BSON type,<br>
+              <span>Username</span>: String,<br>
+              <span>Password</span>: String,<br>
+              <span>Email</span>: String,<br>
+              <span>Birth</span>: Date<br>
             }</td>
             <td>A JSON object holding data about the user that was added.</td>
           </tr>
@@ -130,7 +154,7 @@
             <td>A JSON object holding data that was updated.</td>
           </tr>
           <tr>
-            <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
+            <td>Allow users to add a movie to their list of favorites.</td>
             <td>PATCH</td>
             <td>/users/[Username]/Movies/[MovieID]</td>
             <td>/users/:Username/Movies/:MovieID</td>
@@ -138,7 +162,7 @@
             <td>A JSON object holding data about the user with movies on favorite list.</td>
           </tr>
           <tr>
-            <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
+            <td>Allow users to remove a movie from their list of favorites.</td>
             <td>DELETE</td>
             <td>/users/[Username]/Movies/[MovieID]</td>
             <td>/users/:Username/Movies/:MovieID</td>
@@ -146,7 +170,7 @@
             <td>A JSON object holding data about the updated favorite list.</td>
           </tr>
           <tr>
-            <td>Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
+            <td>Allow existing users to deregister.</td>
             <td>DELETE</td>
             <td>/users/[Username]</td>
             <td>/users/:Username</td>
