@@ -61,10 +61,10 @@ app.get('/users', (req, res) => {
 });
 
 // Gets the data about a single movie, by title
-app.get('/movies/:title', (req, res) => {
+app.get('/movies/:Title', (req, res) => {
   Movies.findOne({ Title: req.params.Title })
-    .then((title) => {
-      res.json(title);
+    .then((movie) => {
+      res.status(200).json(movie);
     })
     .catch((err) => {
       console.error(err);
