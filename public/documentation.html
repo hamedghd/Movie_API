@@ -131,17 +131,17 @@
           </tr>
           <tr>
             <td>Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
-            <td>POST</td>
-            <td>/users/[Username]/favorites/[MovieID]</td>
-            <td>/users/:Username/favorites/:MovieID</td>
+            <td>PATCH</td>
+            <td>/users/[Username]/Movies/[MovieID]</td>
+            <td>/users/:Username/Movies/:MovieID</td>
             <td>None</td>
             <td>A JSON object holding data about the user with movies on favorite list.</td>
           </tr>
           <tr>
             <td>Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
             <td>DELETE</td>
-            <td>/users/[Username]/favorites/[MovieID]</td>
-            <td>/users/:Username/favorites/:MovieID</td>
+            <td>/users/[Username]/Movies/[MovieID]</td>
+            <td>/users/:Username/Movies/:MovieID</td>
             <td>None</td>
             <td>A JSON object holding data about the updated favorite list.</td>
           </tr>
