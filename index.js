@@ -165,7 +165,7 @@ app.put('/users/:Username', (req, res) => {
 
 // Allows users to add a movie to their list of favorites.
 // Add a movie to a user's list of favorites
-app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+app.patch('/users/:Username/Movies/:MovieID', (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $push: { FavoriteMovies: req.params.MovieID }
    },
