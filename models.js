@@ -18,3 +18,14 @@ let movieSchema = mongoose.Schema({
   ImagePath: String,
   Featured: Boolean
 });
+
+// Defines a schema for documents in the "Users" collection
+let userSchema = mongoose.Schema({
+  Username: {type: String, required: true},
+  Password: {type: String, required: true},
+  Email: {type: String, required: true},
+  Birth: Date,
+  FavoriteMovies: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'Movie'
+  }]
+})
