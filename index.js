@@ -19,3 +19,5 @@ const app = express();
 app.use(bodyParser.json());
 // logs all requests to terminal.
 app.use(morgan('common'));
+// Serve documentation.html (static files) from '/public' folder.
+app.use(express.static('public'));
