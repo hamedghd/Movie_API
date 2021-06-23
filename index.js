@@ -47,3 +47,15 @@ app.get('/movies', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
+
+// Gets the data about a single movie, by title
+app.get('/movies/:title', (req, res) => {
+  Users.findOne({ Title: req.params.Title })
+    .then((title) => {
+      res.json(title);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
