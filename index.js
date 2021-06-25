@@ -18,6 +18,10 @@ const bodyParser = require('body-parser');
 // Import auth.js
 let auth = require('./auth')(app);
 
+// Import passport.js
+const passport = require('passport');
+require('./passport');
+
 // Connects Mongoose to the created database.
 mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
