@@ -15,6 +15,9 @@ const morgan = require('morgan');
 // Imports body-parser
 const bodyParser = require('body-parser');
 
+// Import auth.js
+let auth = require('./auth')(app);
+
 // Connects Mongoose to the created database.
 mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
