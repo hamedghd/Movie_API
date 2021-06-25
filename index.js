@@ -15,13 +15,6 @@ const morgan = require('morgan');
 // Imports body-parser
 const bodyParser = require('body-parser');
 
-// Import auth.js
-let auth = require('./auth')(app);
-
-// Import passport.js
-const passport = require('passport');
-require('./passport');
-
 // Connects Mongoose to the created database.
 mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -31,6 +24,13 @@ const app = express();
 
 // Uses bodyparser middleware module
 app.use(bodyParser.json());
+
+// Import auth.js
+let auth = require('./auth')(app);
+
+// Import passport.js
+const passport = require('passport');
+require('./passport');
 
 // logs all requests to terminal.
 app.use(morgan('common'));
