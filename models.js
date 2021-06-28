@@ -19,6 +19,9 @@ let movieSchema = mongoose.Schema({
   Featured: Boolean
 });
 
+// Import bcrypt
+const bcrypt = require('bcrypt');
+
 // Defines a schema for documents in the "Users" collection
 let userSchema = mongoose.Schema({
   Username: {type: String, required: true},
