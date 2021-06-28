@@ -131,6 +131,7 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', { session: false 
   Birthday: Date
 } */
 
+// Hashes the password before storing it
 app.post('/users', (req, res) => {
   let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username }) // Search to see if a user with the requested username already exists
