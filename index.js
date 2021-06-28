@@ -268,7 +268,10 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!');
 });
 
-// Listens on port 8080.
-app.listen(8080, function () {
-  console.log('Server is running on port 8080.');
+// Allows the port change.
+const port = process.env.PORT || 8080;
+
+// Listens on port 8080 or another port.
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
