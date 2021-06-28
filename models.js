@@ -33,6 +33,11 @@ let userSchema = mongoose.Schema({
   }]
 })
 
+// hashes of submitted passwords
+userSchema.statics.hashPassword = (password) => {
+  return bcrypt.hashSync(password, 10);
+};
+
 // Creates models using schemas.
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
