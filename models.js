@@ -38,6 +38,11 @@ userSchema.statics.hashPassword = (password) => {
   return bcrypt.hashSync(password, 10);
 };
 
+// Compares submitted hashed passwords with the hashed passwords stored in the database
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt.compareSync(password, this.Password);
+};
+
 // Creates models using schemas.
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
