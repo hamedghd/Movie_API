@@ -43,6 +43,10 @@ app.get('/', function (req, res) {
   res.send('Welcome to my movie club!');
 });
 
+// Imports CORS
+const cors = require('cors');
+app.use(cors());
+
 // Maps a route at the endpoint “/movies”.
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
