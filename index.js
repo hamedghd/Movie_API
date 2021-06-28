@@ -60,6 +60,9 @@ app.use(cors({
   }
 }));
 
+// Imports Express-validator
+const { check, validationResult } = require('express-validator');
+
 // Maps a route at the endpoint “/movies”.
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
