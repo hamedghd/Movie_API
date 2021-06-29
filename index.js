@@ -16,8 +16,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 // Connects Mongoose to the created database.
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Creates an Express instance.
 // Declares a new variable to encapsulate the Express's functionality.
@@ -194,15 +194,35 @@ app.post('/users',
   (required)
   Birthday: Date
 } */
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
+app.put('/users/:Username',
+
+ // passport.authenticate('jwt', { session: false }), (req, res) => {
+ // Validation logic here for request
+ // you can either use a chain of methods like .not().isEmpty()
+ // which means "opposite of isEmpty" in plain english "is not empty"
+ // or use .isLength({min: 5}) which means
+ // minimum value of 5 characters are only allowed
+  [
+    check('Username', 'Username is required').isLength({min: 5}),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()
+  ], (req, res) => {
+    // check the validation object for errors
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOneAndUpdate({ Username: hashedPassword }, { $set:
     {
       Username: req.body.Username,
-      Password: req.body.Password,
+      Password: hashedPassword,
       Email: req.body.Email,
       Birthday: req.body.Birthday
     }
-  },
+    },
   { new: true }, // This line makes sure that the updated document is returned
   (err, updatedUser) => {
     if(err) {
