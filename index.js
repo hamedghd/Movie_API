@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 // logs all requests to terminal.
 app.use(morgan('common'));
-require('./passport');
 app.use(cors());
 // To restrict the access to the API from different domains:
 // let allowedOrigins = ['http://localhost:8080'];
