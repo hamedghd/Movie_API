@@ -1,25 +1,23 @@
-// Imports Express
-const express = require('express');
-// Imports body-parser
-const bodyParser = require('body-parser');
-// Imports Morgan
-const morgan = require('morgan');
-// Imports Mongoose
-const mongoose = require('mongoose');
-// Imports models.
-const Models = require('./models.js');
-const Movies = Models.Movie;
-const Users = Models.User;
-// Creates an Express instance.
-// Declares a new variable to encapsulate the Express's functionality.
-const app = express();
-// Import passport.js
-const passport = require('passport');
+const express = require('express'),
+    bodyParser = require('body-parser'),
+    morgan = require('morgan'),
+    mongoose = require('mongoose'),
+    Models = require('./models.js'),
+    Movies = Models.Movie,
+    Users = Models.User,
+    // Creates an Express instance.
+    // Declares a new variable to encapsulate the Express's functionality.
+    app = express(),
+    passport = require('passport'),
+    cors = require('cors'),
+    { check, validationResult } = require('express-validator');
+
+app.use(bodyParser.json());
+// Serve documentation.html (static files) from '/public' folder.
+app.use(express.static('public'));
+// logs all requests to terminal.
+app.use(morgan('common'));
 require('./passport');
-// Imports CORS
-const cors = require('cors');
-// Imports Express-validator
-const { check, validationResult } = require('express-validator');
 app.use(cors());
 // To restrict the access to the API from different domains:
 // let allowedOrigins = ['http://localhost:8080'];
@@ -34,14 +32,7 @@ app.use(cors());
 //     return callback(null, true);
 //   }
 // }));
-// Uses bodyparser middleware module
-app.use(bodyParser.json());
-// Import auth.js
 let auth = require('./auth')(app);
-// logs all requests to terminal.
-app.use(morgan('common'));
-// Serve documentation.html (static files) from '/public' folder.
-app.use(express.static('public'));
 
 // Connects Mongoose to the created database.
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
