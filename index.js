@@ -16,7 +16,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 // Connects Mongoose to the created database.
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Creates an Express instance.
 // Declares a new variable to encapsulate the Express's functionality.
