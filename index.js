@@ -1,8 +1,6 @@
 // Imports Mongoose
 const mongoose = require('mongoose');
 
-
-
 // Imports Express
 const express = require('express');
 
@@ -11,10 +9,6 @@ const morgan = require('morgan');
 
 // Imports body-parser
 const bodyParser = require('body-parser');
-
-// Connects Mongoose to the created database.
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Imports models.
 const Models = require('./models.js');
@@ -41,11 +35,6 @@ app.use(morgan('common'));
 // Serve documentation.html (static files) from '/public' folder.
 app.use(express.static('public'));
 
-// Maps a route at the endpoint “/”.
-app.get('/', function (req, res) {
-  res.send('Welcome to my movie club!');
-});
-
 // Imports CORS
 const cors = require('cors');
 app.use(cors());
@@ -65,6 +54,15 @@ app.use(cors());
 
 // Imports Express-validator
 const { check, validationResult } = require('express-validator');
+
+// Connects Mongoose to the created database.
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Maps a route at the endpoint “/”.
+app.get('/', function (req, res) {
+  res.send('Welcome to my movie club!');
+});
 
 // Maps a route at the endpoint “/movies”.
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
