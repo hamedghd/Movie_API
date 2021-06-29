@@ -1,42 +1,25 @@
-// Imports Mongoose
-const mongoose = require('mongoose');
-
 // Imports Express
 const express = require('express');
-
-// Imports Morgan
-const morgan = require('morgan');
-
 // Imports body-parser
 const bodyParser = require('body-parser');
-
+// Imports Morgan
+const morgan = require('morgan');
+// Imports Mongoose
+const mongoose = require('mongoose');
 // Imports models.
 const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
-
 // Creates an Express instance.
 // Declares a new variable to encapsulate the Express's functionality.
 const app = express();
-
-// Uses bodyparser middleware module
-app.use(bodyParser.json());
-
-// Import auth.js
-let auth = require('./auth')(app);
-
 // Import passport.js
 const passport = require('passport');
 require('./passport');
-
-// logs all requests to terminal.
-app.use(morgan('common'));
-
-// Serve documentation.html (static files) from '/public' folder.
-app.use(express.static('public'));
-
 // Imports CORS
 const cors = require('cors');
+// Imports Express-validator
+const { check, validationResult } = require('express-validator');
 app.use(cors());
 // To restrict the access to the API from different domains:
 // let allowedOrigins = ['http://localhost:8080'];
@@ -51,9 +34,14 @@ app.use(cors());
 //     return callback(null, true);
 //   }
 // }));
-
-// Imports Express-validator
-const { check, validationResult } = require('express-validator');
+// Uses bodyparser middleware module
+app.use(bodyParser.json());
+// Import auth.js
+let auth = require('./auth')(app);
+// logs all requests to terminal.
+app.use(morgan('common'));
+// Serve documentation.html (static files) from '/public' folder.
+app.use(express.static('public'));
 
 // Connects Mongoose to the created database.
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
