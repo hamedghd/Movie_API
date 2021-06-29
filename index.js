@@ -195,6 +195,7 @@ app.post('/users',
   Birthday: Date
 } */
 app.put('/users/:Username',
+  passport.authenticate('jwt', { session: false }),
 
  // passport.authenticate('jwt', { session: false }), (req, res) => {
  // Validation logic here for request
