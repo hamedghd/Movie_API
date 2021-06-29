@@ -37,7 +37,7 @@ let auth = require('./auth')(app);
 
 // Connects Mongoose to the created database.
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 // Maps a route at the endpoint “/”.
 app.get('/', function (req, res) {
