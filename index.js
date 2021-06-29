@@ -12,11 +12,6 @@ const express = require('express'),
     cors = require('cors'),
     { check, validationResult } = require('express-validator');
 
-app.use(bodyParser.json());
-// Serve documentation.html (static files) from '/public' folder.
-app.use(express.static('public'));
-// logs all requests to terminal.
-app.use(morgan('common'));
 app.use(cors());
 // To restrict the access to the API from different domains:
 // let allowedOrigins = ['http://localhost:8080'];
@@ -31,6 +26,12 @@ app.use(cors());
 //     return callback(null, true);
 //   }
 // }));
+app.use(bodyParser.json());
+// Serve documentation.html (static files) from '/public' folder.
+app.use(express.static('public'));
+// logs all requests to terminal.
+app.use(morgan('common'));
+
 let auth = require('./auth')(app);
 
 // Connects Mongoose to the created database.
