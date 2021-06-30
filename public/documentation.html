@@ -175,7 +175,27 @@
             <td>/users/[Username]</td>
             <td>/users/:Username</td>
             <td>None</td>
-            <td>A text message indicating that the user was deleted</td>
+            <td>A text message indicating that the user was deleted.</td>
+          </tr>
+          <tr>
+            <td>Allow existing users to login.</td>
+            <td>POST</td>
+            <td>/login</td>
+            <td>None</td>
+            <td>Username and Password</td>
+            <td>A JSON object holding data about the user with a JWT token for authentication. Format:<br>
+              {<br>
+                <span>"user"</span>: {<br>
+                <span>"FavoriteMovies"</span>: [ 12-byte BSON type,],<br>
+                <span>"_id"</span>: "60dc119425ba9900155871dc",<br>
+                <span>"Username"</span>: "newUser",<br>
+                <span>"Password"</span>: "hashedPassword",<br>
+                <span>"Email"</span>: "String",<br>
+                <span>"__v"</span>: Integer<br>
+                },<br>
+                <span>"token"</span>: "JWT"<br>
+            }<br>
+            </td>
           </tr>
         </tbody>
       </table>
