@@ -1,16 +1,16 @@
 const express = require('express'),
-    bodyParser = require('body-parser'),
-    morgan = require('morgan'),
-    mongoose = require('mongoose'),
-    Models = require('./models.js'),
-    Movies = Models.Movie,
-    Users = Models.User,
-    // Creates an Express instance.
-    // Declares a new variable to encapsulate the Express's functionality.
-    app = express(),
-    passport = require('passport'),
-    cors = require('cors'),
-    { check, validationResult } = require('express-validator');
+  bodyParser = require('body-parser'),
+  morgan = require('morgan'),
+  mongoose = require('mongoose'),
+  Models = require('./models.js'),
+  Movies = Models.Movie,
+  Users = Models.User,
+  // Creates an Express instance.
+  // Declares a new variable to encapsulate the Express's functionality.
+  app = express(),
+  passport = require('passport'),
+  cors = require('cors'),
+  { check, validationResult } = require('express-validator');
 
 //app.use(cors());
 // To restrict the access to the API from different domains:
@@ -177,12 +177,12 @@ app.post('/users',
 app.put('/users/:Username',
   passport.authenticate('jwt', { session: false }),
 
- // passport.authenticate('jwt', { session: false }), (req, res) => {
- // Validation logic here for request
- // you can either use a chain of methods like .not().isEmpty()
- // which means "opposite of isEmpty" in plain english "is not empty"
- // or use .isLength({min: 5}) which means
- // minimum value of 5 characters are only allowed
+  // passport.authenticate('jwt', { session: false }), (req, res) => {
+  // Validation logic here for request
+  // you can either use a chain of methods like .not().isEmpty()
+  // which means "opposite of isEmpty" in plain english "is not empty"
+  // or use .isLength({min: 5}) which means
+  // minimum value of 5 characters are only allowed
   [
     check('Username', 'Username is required').isLength({min: 5}),
     check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -204,16 +204,16 @@ app.put('/users/:Username',
       Birthday: req.body.Birthday
     }
     },
-  { new: true }, // This line makes sure that the updated document is returned
-  (err, updatedUser) => {
-    if(err) {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    } else {
-      res.json(updatedUser);
-    }
+    { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
+    });
   });
-});
 
 // Allows users to add a movie to their list of favorites.
 // Add a movie to a user's list of favorites
