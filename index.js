@@ -14,7 +14,7 @@ const express = require('express'),
 
 //app.use(cors());
 // To restrict the access to the API from different domains:
-let allowedOrigins = ['http://localhost:8080', 'https://myflix-movieapi.herokuapp.com'];
+let allowedOrigins = ['http://localhost:8080', 'https://myflix-movieapi.herokuapp.com', 'http://localhost:1234'];
 
 app.use(cors({
   origin: (origin, callback) => {
