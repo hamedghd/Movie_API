@@ -1,27 +1,26 @@
-const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  mongoose = require('mongoose'),
-  Models = require('./models.js'),
-  Movies = Models.Movie,
-  Users = Models.User,
-  /* Creates an Express instance.
-  Declares a new variable to encapsulate the Express's functionality. */
-  app = express(),
-  passport = require('passport'),
-  cors = require('cors'),
-  { check, validationResult } = require('express-validator');
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+const Movies = Models.Movie;
+const Users = Models.User;
+/* Creates an Express instance.
+Declares a new variable to encapsulate the Express's functionality. */
+const app = express();
+const cors = require('cors');
+const { check, validationResult } = require('express-validator');
 
-//app.use(cors());
+// app.use(cors());
 // To restrict the access to the API from different domains:
-let allowedOrigins = ['http://localhost:8080', 'https://myflix-movieapi.herokuapp.com', 'http://localhost:1234'];
+const allowedOrigins = ['http://localhost:8080', 'https://myflix-movieapi.herokuapp.com', 'http://localhost:1234'];
 
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
-      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-      return callback(new Error(message ), false);
+      const message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message), false);
     }
     return callback(null, true);
   }
@@ -34,6 +33,7 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 
 let auth = require('./auth')(app);
+const passport = require('passport');
 require('./passport');
 
 // Connects Mongoose to the created database.
