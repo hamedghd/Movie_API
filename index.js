@@ -5,8 +5,8 @@ const express = require('express'),
   Models = require('./models.js'),
   Movies = Models.Movie,
   Users = Models.User,
-  // Creates an Express instance.
-  // Declares a new variable to encapsulate the Express's functionality.
+  /* Creates an Express instance.
+  Declares a new variable to encapsulate the Express's functionality. */
   app = express(),
   passport = require('passport'),
   cors = require('cors'),
@@ -34,6 +34,7 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 
 let auth = require('./auth')(app);
+require('./passport');
 
 // Connects Mongoose to the created database.
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
