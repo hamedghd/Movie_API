@@ -1,10 +1,10 @@
 // Import Passport middleware
 //  “LocalStrategy,” defines the basic HTTP authentication for login requests.
 // “JWTStrategy,” allows users to be authenticated based on the JWT submitted alongside their request.
-const passport = require('passport'),
-  LocalStrategy = require('passport-local').Strategy,
-  Models = require('./models.js'),
-  passportJWT = require('passport-jwt');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const Models = require('./models.js');
+const passportJWT = require('passport-jwt');
 
 // Configure Passport strategies:
 let Users = Models.User,
