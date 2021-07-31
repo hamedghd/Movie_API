@@ -179,8 +179,8 @@ app.get(
   (required)
   Birthday: Date
 } */
-//app.put('/users/:Username',
-app.put('/users/profile',
+app.put('/users/:Username',
+//app.put('/users/profile',
   passport.authenticate('jwt', { session: false }),
 
   // passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -202,8 +202,8 @@ app.put('/users/profile',
     }
 
     let hashedPassword = Users.hashPassword(req.body.Password);
-    //Users.findOneAndUpdate({ Username: req.body.Username }, { $set:
-    Users.findOneAndUpdate({ _id: req.body._id }, { $set:
+    Users.findOneAndUpdate({ Username: req.body.Username }, { $set:
+    //Users.findOneAndUpdate({ _id: req.body._id }, { $set:
 
     {
       Username: req.body.Username,
