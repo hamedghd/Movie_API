@@ -179,7 +179,8 @@ app.get(
   (required)
   Birthday: Date
 } */
-app.put('/users/:Username',
+//app.put('/users/:Username',
+app.put('/users/profile',
   passport.authenticate('jwt', { session: false }),
 
   // passport.authenticate('jwt', { session: false }), (req, res) => {
