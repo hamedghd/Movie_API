@@ -13,7 +13,12 @@ const { check, validationResult } = require('express-validator');
 
 // app.use(cors());
 // To restrict the access to the API from different domains:
-const allowedOrigins = ['http://localhost:8080', 'https://myflix-movieapi.herokuapp.com', 'http://localhost:1234'];
+const allowedOrigins = [
+  'http://localhost:8080',
+  'https://myflix-movieapi.herokuapp.com',
+  'http://localhost:1234',
+  'http://localhost:4200/',
+];
 
 app.use(cors({
   origin: (origin, callback) => {
