@@ -246,7 +246,7 @@ app.get('/users/:Username/movies',
 
 // Allows users to add a movie to their list of favorites.
 // Add a movie to a user's list of favorites
-app.patch('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $push: { FavoriteMovies: req.params.MovieID }
    },
