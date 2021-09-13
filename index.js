@@ -106,7 +106,7 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', { session: false 
   Username: String,
   Password: String (hashes Password),
   Email: String,
-  Birthday: Date
+  Birth: Date
 } */
 
 // Hashes the password before storing it
@@ -142,7 +142,7 @@ app.post('/users',
               Username: req.body.Username,
               Password: hashedPassword,
               Email: req.body.Email,
-              Birthday: req.body.Birthday
+              Birth: req.body.Birth
             })
             .then((user) => { res.status(201).json(user) })
             .catch((error) => {
@@ -182,7 +182,7 @@ app.get(
   (required)
   Email: String,
   (required)
-  Birthday: Date
+  Birth: Date
 } */
 app.put('/users/:Username',
 //app.put('/users/profile',
@@ -214,7 +214,7 @@ app.put('/users/:Username',
       Username: req.body.Username,
       Password: hashedPassword,
       Email: req.body.Email,
-      Birthday: req.body.Birthday
+      Birth: req.body.Birth
     }
     },
     { new: true }, // This line makes sure that the updated document is returned
