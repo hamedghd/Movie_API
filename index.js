@@ -18,6 +18,7 @@ const allowedOrigins = [
   'https://myflix-movieapi.herokuapp.com',
   'http://localhost:1234',
   'http://localhost:4200',
+  'https://hamedghd.github.io/myFlix-Angular-client'
 ];
 
 app.use(cors({
