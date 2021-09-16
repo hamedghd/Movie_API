@@ -62,7 +62,7 @@ app.get('/', function (req, res) {
 
 /**
  * Maps a route at the endpoint “/movies”.
- * @method GET
+ * @func getAllMovies
  * @param {string} endpoint
  * @returns {object} containing all the movies data
  * @requires authentication JWT
@@ -80,7 +80,7 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
 
 /**
  * Gets the data about a single movie, by title
- * @method GET
+ * @func getASingleMovie
  * @param {string} (title) endpoint
  * @returns {object} data about a single movie
  * @requires authentication JWT
@@ -98,7 +98,7 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req
 
 /**
  * Returns data about a genre (description) by name/title.
- * @method GET
+ * @func getMovieGenre
  * @param {string} (name) endpoint
  * @returns {object} data about a genre
  * @requires authentication JWT 
@@ -116,7 +116,7 @@ app.get('/movies/genres/:Genre', passport.authenticate('jwt', { session: false }
 
 /**
  * Returns data about a director (bio, birth year, death year) by name
- * @method GET
+ * @func getMovieDirector
  * @param {string} (name) endpoint
  * @returns {object} data about a director
  * @requires authenticate JWT
@@ -142,7 +142,7 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', { session: false 
     Email: String,
     Birth: Date
   }
- * @method POST
+ * @func registerUser
  * @param {object} object containing user details
  * @returns {object} json-object added user
  * @requires properties username, password, email
@@ -198,7 +198,7 @@ app.post('/users',
 
 /**
  * Allows users to retrieve their user info (username).
- * @method GET
+ * @func getUserInfo
  * @param {string} (username) endpoint
  * @returns {object} containing details of one user
  * @requires authentication JWT
@@ -230,7 +230,7 @@ app.get(
   (required)
   Birth: Date
 }
- *  @method PUT
+ * @func updateUserInfo
  * @param {object} object containing user details
  * @returns {object} json-object added user
  * @requires properties username, password, email
@@ -284,7 +284,7 @@ app.put('/users/:Username',
 
 /**
  * Gets the list of favorite movies
- * @method GET
+ * @func getFavoriteMovies
  * @param {string} (username) endpoint
  * @returns {object} containing favoritemovies array of user
  * @requires authentication JWT
@@ -306,7 +306,7 @@ app.get('/users/:Username/movies',
 
 /**
  * Allows users to add a movie to their list of favorites.
- * @method POST
+ * @func AddAMovieToFavorites
  * @param {string} (username, movieId) endpoint
  * @returns {statusMessage} success/error
  * @requires authentication JWT
@@ -329,7 +329,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 
 /**
  * Allows users to remove a movie from their list of favorites.
- * @method DELETE
+ * @func RemoveAMovieFromFavorites
  * @param {string} (username, movieId) endpoint
  * @returns {statusMessage} success/error
  * @requires authentication JWT
@@ -349,9 +349,9 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
     });
 });
 
-// Allows existing users to deregister.
 /**
- * @method DELETE
+ * Allows existing users to deregister.
+ * @func RemoveUserAccount
  * @param {string} (username) endpoint
  * @returns {statusMessage} success/error
  * @requires authentication JWT

@@ -90,7 +90,7 @@ app.get('/', function (req, res) {
 
 /**
  * Maps a route at the endpoint “/movies”.
- * @method GET
+ * @func getAllMovies
  * @param {string} endpoint
  * @returns {object} containing all the movies data
  * @requires authentication JWT
@@ -108,7 +108,7 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
 
 /**
  * Gets the data about a single movie, by title
- * @method GET
+ * @func getASingleMovie
  * @param {string} (title) endpoint
  * @returns {object} data about a single movie
  * @requires authentication JWT
@@ -126,7 +126,7 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req
 
 /**
  * Returns data about a genre (description) by name/title.
- * @method GET
+ * @func getMovieGenre
  * @param {string} (name) endpoint
  * @returns {object} data about a genre
  * @requires authentication JWT 
@@ -144,7 +144,7 @@ app.get('/movies/genres/:Genre', passport.authenticate('jwt', { session: false }
 
 /**
  * Returns data about a director (bio, birth year, death year) by name
- * @method GET
+ * @func getMovieDirector
  * @param {string} (name) endpoint
  * @returns {object} data about a director
  * @requires authenticate JWT
@@ -170,7 +170,7 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', { session: false 
     Email: String,
     Birth: Date
   }
- * @method POST
+ * @func registerUser
  * @param {object} object containing user details
  * @returns {object} json-object added user
  * @requires properties username, password, email
@@ -226,7 +226,7 @@ app.post('/users',
 
 /**
  * Allows users to retrieve their user info (username).
- * @method GET
+ * @func getUserInfo
  * @param {string} (username) endpoint
  * @returns {object} containing details of one user
  * @requires authentication JWT
@@ -258,7 +258,7 @@ app.get(
   (required)
   Birth: Date
 }
- *  @method PUT
+ * @func updateUserInfo
  * @param {object} object containing user details
  * @returns {object} json-object added user
  * @requires properties username, password, email
@@ -312,7 +312,7 @@ app.put('/users/:Username',
 
 /**
  * Gets the list of favorite movies
- * @method GET
+ * @func getFavoriteMovies
  * @param {string} (username) endpoint
  * @returns {object} containing favoritemovies array of user
  * @requires authentication JWT
@@ -334,7 +334,7 @@ app.get('/users/:Username/movies',
 
 /**
  * Allows users to add a movie to their list of favorites.
- * @method POST
+ * @func AddAMovieToFavorites
  * @param {string} (username, movieId) endpoint
  * @returns {statusMessage} success/error
  * @requires authentication JWT
@@ -357,7 +357,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 
 /**
  * Allows users to remove a movie from their list of favorites.
- * @method DELETE
+ * @func RemoveAMovieFromFavorites
  * @param {string} (username, movieId) endpoint
  * @returns {statusMessage} success/error
  * @requires authentication JWT
@@ -377,9 +377,9 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
     });
 });
 
-// Allows existing users to deregister.
 /**
- * @method DELETE
+ * Allows existing users to deregister.
+ * @func RemoveUserAccount
  * @param {string} (username) endpoint
  * @returns {statusMessage} success/error
  * @requires authentication JWT
@@ -426,13 +426,13 @@ app.listen(port, '0.0.0.0', () => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#allowedOrigins">allowedOrigins</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#bcrypt">bcrypt</a></li><li><a href="global.html#DELETE">DELETE</a></li><li><a href="global.html#GET">GET</a></li><li><a href="global.html#mongoose">mongoose</a></li><li><a href="global.html#Movie">Movie</a></li><li><a href="global.html#movieSchema">movieSchema</a></li><li><a href="global.html#POST">POST</a></li><li><a href="global.html#PUT">PUT</a></li><li><a href="global.html#userSchema">userSchema</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddAMovieToFavorites">AddAMovieToFavorites</a></li><li><a href="global.html#allowedOrigins">allowedOrigins</a></li><li><a href="global.html#app">app</a></li><li><a href="global.html#bcrypt">bcrypt</a></li><li><a href="global.html#getAllMovies">getAllMovies</a></li><li><a href="global.html#getASingleMovie">getASingleMovie</a></li><li><a href="global.html#getFavoriteMovies">getFavoriteMovies</a></li><li><a href="global.html#getMovieDirector">getMovieDirector</a></li><li><a href="global.html#getMovieGenre">getMovieGenre</a></li><li><a href="global.html#getUserInfo">getUserInfo</a></li><li><a href="global.html#mongoose">mongoose</a></li><li><a href="global.html#Movie">Movie</a></li><li><a href="global.html#movieSchema">movieSchema</a></li><li><a href="global.html#registerUser">registerUser</a></li><li><a href="global.html#RemoveAMovieFromFavorites">RemoveAMovieFromFavorites</a></li><li><a href="global.html#RemoveUserAccount">RemoveUserAccount</a></li><li><a href="global.html#updateUserInfo">updateUserInfo</a></li><li><a href="global.html#userSchema">userSchema</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Sep 15 2021 13:53:49 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Sep 16 2021 23:13:14 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>
